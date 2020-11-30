@@ -1,10 +1,15 @@
-FROM circleci/clojure:lein-2.8.1-node-browsers
+FROM circleci/clojure:lein-2.9.3-node-browsers
 
 MAINTAINER Cam Saul <cam@metabase.com>
 
-RUN sudo apt-get install build-essential
+RUN sudo apt-get update
 
-RUN sudo npm install -g 'yarn@>=0.16.0'
-RUN sudo chmod 755 /usr/local/bin/yarn
+# Install gettext
+RUN sudo apt-get install gettext
+
+# Install Clojure CLI
+RUN curl -O https://download.clojure.org/install/linux-install-1.10.1.739.sh && \
+        chmod +x linux-install-1.10.1.739.sh && \
+        sudo ./linux-install-1.10.1.739.sh
 
 CMD ["/bin/sh"]
