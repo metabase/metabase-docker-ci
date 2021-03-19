@@ -4,14 +4,10 @@
 
 Docker image with some extra stuff installed for use in Metabase CI.
 
-This is the default CircleCI Lein + Node Docker image with the following extras installed:
+This is the default CircleCI Lein + Node (includes Node.js) + browsers (includes Chrome, Firefox, OpenJDK v11, and Geckodriver) Docker image with the following extras installed:
 
-- `gettext`
 - Clojure CLI
 
 # Building
 
-```bash
-tag='metabase/ci:2020-11-30'
-docker build -t $tag . && docker push $tag
-```
+Should build and push to Dockerhub automatically with each commit
