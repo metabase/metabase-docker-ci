@@ -2,12 +2,13 @@
 [`metabase/ci`](https://hub.docker.com/repository/docker/metabase/ci)
 [![](https://images.microbadger.com/badges/version/metabase/ci.svg)](https://microbadger.com/images/metabase/ci)
 
-Docker image with some extra stuff installed for use in Metabase CI.
+AdoptOpenJDK11:apine + Lein 2.9.5 + Clojure CLI
 
-This is the default CircleCI Lein + Node (includes Node.js) + browsers (includes Chrome, Firefox, OpenJDK v11, and Geckodriver) Docker image with the following extras installed:
-
-- Clojure CLI
-
-# Building
-
-Should build and push to Dockerhub automatically with each commit
+- coreutils:    needed for the basic tools
+- ttf-dejavu:   needed for POI
+- fontconfig:   needed for POI
+- bash:         various shell scripts
+- yarn:         frontend building
+- nodejs:       frontend building
+- git:          ./bin/version
+- curl:         needed by script that installs Clojure CLI & Lein
