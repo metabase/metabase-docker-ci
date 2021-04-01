@@ -11,7 +11,7 @@ ENV FC_LANG en-US LC_CTYPE en_US.UTF-8
 # git:          ./bin/version
 # curl:         needed by script that installs Clojure CLI & Lein
 
-RUN apk add --update-cache --no-cache coreutils ttf-dejavu fontconfig bash yarn nodejs git curl && \
+RUN apk upgrade && apk add --update-cache --no-cache coreutils ttf-dejavu fontconfig bash yarn nodejs git curl && \
     curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -o /usr/local/bin/lein && \
     chmod +x /usr/local/bin/lein && \
     /usr/local/bin/lein upgrade && \
