@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine
+FROM adoptopenjdk/openjdk16:alpine
 
 ENV FC_LANG en-US LC_CTYPE en_US.UTF-8
 
@@ -15,8 +15,8 @@ RUN apk add --no-cache coreutils ttf-dejavu fontconfig bash yarn nodejs git curl
     curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -o /usr/local/bin/lein && \
     chmod +x /usr/local/bin/lein && \
     /usr/local/bin/lein upgrade && \
-    curl https://download.clojure.org/install/linux-install-1.10.3.814.sh -o /tmp/linux-install-1.10.3.814.sh && \
-    chmod +x /tmp/linux-install-1.10.3.814.sh && \
-    sh /tmp/linux-install-1.10.3.814.sh
+    curl https://download.clojure.org/install/linux-install-1.10.3.822.sh -o /tmp/linux-install-1.10.3.822.sh && \
+    chmod +x /tmp/linux-install-1.10.3.822.sh && \
+    sh /tmp/linux-install-1.10.3.822.sh
 
 CMD ["/bin/sh"]
