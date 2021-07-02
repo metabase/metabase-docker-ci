@@ -1,4 +1,4 @@
-FROM circleci/clojure:lein-2.9.6-node
+FROM circleci/clojure:lein-2.9.6-buster-node
 
 RUN sudo apt update && sudo apt upgrade -y && \
     sudo curl -O https://download.clojure.org/install/linux-install-1.10.3.814.sh && \
