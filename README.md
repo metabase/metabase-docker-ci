@@ -12,3 +12,4 @@ AdoptOpenJDK11:apine + Lein 2.9.5 + Clojure CLI
 - nodejs:       frontend building
 - git:          ./bin/version
 - curl:         needed by script that installs Clojure CLI & Lein
+- openssl:      needed to capture SSL certificates during CI setup process
