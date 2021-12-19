@@ -15,7 +15,7 @@ RUN apt-get update && apt-get upgrade -y && \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update && apt-get upgrade -y && apt-get install -y git nodejs yarn \
     # now installing Cypress dependencies according to https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements
-    && apt-get install -y sudo jq wget libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \
+    && apt-get install -y sudo nc jq wget libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \
     # creating circleci user so nothing falls apart
     && groupadd --gid 3434 circleci   && useradd --uid 3434 --gid circleci --shell /bin/bash --create-home circleci \
     && touch /etc/sudoers.d/50-circleci && echo 'circleci ALL=NOPASSWD: ALL' >> /etc/sudoers.d/50-circleci   && echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
