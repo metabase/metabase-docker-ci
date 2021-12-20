@@ -2,8 +2,7 @@ FROM eclipse-temurin:8-jdk-focal
 
 ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
-ENV JAVA_HOME=/usr/local/openjdk-11
-ENV PATH=/usr/local/openjdk-11/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV JAVA_HOME=/usr/local/openjdk-8
 
 # installing Clojure and Clojure CLI
 RUN curl -O https://download.clojure.org/install/linux-install-1.10.3.1040.sh && \
