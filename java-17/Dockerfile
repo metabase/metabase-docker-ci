@@ -1,8 +1,8 @@
 FROM eclipse-temurin:17-jdk-focal
 
-ENV LANG=C.UTF-8
+ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
-ENV JAVA_HOME=/usr/local/openjdk-17
+ENV JAVA_HOME=/opt/java/openjdk
 
 # installing Clojure and Clojure CLI
 RUN curl -O https://download.clojure.org/install/linux-install-1.10.3.1040.sh && \
@@ -20,7 +20,7 @@ RUN curl -O https://download.clojure.org/install/linux-install-1.10.3.1040.sh &&
     && touch /etc/sudoers.d/50-circleci && echo 'circleci ALL=NOPASSWD: ALL' >> /etc/sudoers.d/50-circleci   && echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
 # switching to circleci user
 USER circleci
-ENV PATH=/home/circleci/.local/bin:/home/circleci/bin:/usr/local/openjdk-17/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/home/circleci/.local/bin:/home/circleci/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # firefox install
 RUN FIREFOX_URL="https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" \
