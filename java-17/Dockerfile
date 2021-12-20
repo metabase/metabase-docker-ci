@@ -12,7 +12,7 @@ RUN curl -O https://download.clojure.org/install/linux-install-1.10.3.1040.sh &&
     curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y git nodejs yarn \
+    && apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y git nodejs yarn unzip \
     # now installing Cypress dependencies according to https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements
     && apt-get install --no-install-recommends -y sudo netcat jq wget libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \
     # creating circleci user so nothing falls apart
@@ -43,7 +43,7 @@ RUN FIREFOX_URL="https://download.mozilla.org/?product=firefox-latest-ssl&os=lin
     && export CHROMEDRIVER_RELEASE="$(echo $CHROME_VERSION | sed 's/^Google Chrome //')" && export CHROMEDRIVER_RELEASE=${CHROMEDRIVER_RELEASE%%.*} \
     && CHROMEDRIVER_VERSION=$(curl --silent --show-error --location --fail --retry 4 --retry-delay 5 http://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROMEDRIVER_RELEASE}) \
     && curl --silent --show-error --location --fail --retry 4 --retry-delay 5 --output /tmp/chromedriver_linux64.zip "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip" \
-    && cd /tmp     && unzip chromedriver_linux64.zip \ 
+    && cd /tmp && unzip chromedriver_linux64.zip \ 
     && rm -rf chromedriver_linux64.zip \
     && sudo mv chromedriver /usr/local/bin/chromedriver \
     && sudo chmod +x /usr/local/bin/chromedriver && chromedriver --version \
