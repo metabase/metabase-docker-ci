@@ -50,6 +50,4 @@ RUN FIREFOX_URL="https://download.mozilla.org/?product=firefox-latest-ssl&os=lin
     # to finish, do some cleanup
     && sudo apt-get clean
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
-
 CMD ["/bin/sh"]
