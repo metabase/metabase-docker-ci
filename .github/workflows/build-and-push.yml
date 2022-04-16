@@ -27,12 +27,14 @@ jobs:
       - name: Create the Java ${{ matrix.version }} builder image
         # we still can't add linux/arm64/v8 because of a segfault on yarn installation on 20.04
         run: |
-          docker buildx build
-          -f Dockerfiles/java-${{ matrix.version }}/build/Dockerfile
-          --platform linux/amd64
-          -t metabase/ci:java-${{ matrix.version }}-clj-1.10.1040.12-2021-build --push --compress --no-cache .
+          docker buildx build \
+          --platform linux/amd64,linux/arm64/v8 \
+          -f Dockerfiles/java-${{ matrix.version }}/build/Dockerfile \
+          -t metabase/ci:java-${{ matrix.version }}-clj-1.11.0.1100.04-2022-build --push --compress --no-cache .
       - name: Create the Java ${{ matrix.version }} testing image
+        # there are no arm64 versions of the browsers
         run: |
-          docker buildx build
-          -f java-${{ matrix.version }}/test/Dockerfile
-          -t metabase/ci:java-${{ matrix.version }}-clj-1.10.1040.12-2021-node-browsers --push --compress --no-cache .
+          docker buildx build \
+          --platform linux/amd64 \
+          -f Dockerfiles/java-${{ matrix.version }}/test/Dockerfile \
+          -t metabase/ci:java-${{ matrix.version }}-clj-1.11.0.1100.04-2022-node-browsers --push --compress --no-cache .

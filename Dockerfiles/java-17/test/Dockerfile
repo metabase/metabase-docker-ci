@@ -1,7 +1,7 @@
-FROM metabase/ci:java-17-clj-1.10.1040.12-2021-build
+FROM metabase/ci:java-17-clj-1.11.0.1100.04-2022-build
 
 # now installing Cypress dependencies according to https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements
-RUN sudo apt-get install --no-install-recommends -y unzip netcat jq libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \ 
+RUN sudo apt-get install --no-install-recommends -y unzip jq libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \ 
     # firefox install
     && FIREFOX_URL="https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" \
     && ACTUAL_URL=$(curl -Ls -o /dev/null -w %{url_effective} $FIREFOX_URL) \
