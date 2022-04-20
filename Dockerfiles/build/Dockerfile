@@ -1,4 +1,5 @@
-FROM eclipse-temurin:11-jdk
+ARG JAVA_VERSION
+FROM eclipse-temurin:${JAVA_VERSION}-jdk
 
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive

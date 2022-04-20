@@ -1,4 +1,5 @@
-FROM metabase/ci:java-8-clj-1.11.0.1100.04-2022-build
+ARG JAVA_VERSION
+FROM metabase/ci:java-${JAVA_VERSION}-clj-1.11.0.1100.04-2022-build
 
 # now installing Cypress dependencies according to https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements
 RUN sudo apt-get install --no-install-recommends -y unzip jq libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \ 

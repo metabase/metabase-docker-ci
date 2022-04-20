@@ -29,12 +29,12 @@ jobs:
         run: |
           docker buildx build \
           --platform linux/amd64,linux/arm64/v8 \
-          -f Dockerfiles/java-${{ matrix.version }}/build/Dockerfile \
-          -t metabase/ci:java-${{ matrix.version }}-clj-1.11.0.1100.04-2022-build --push --compress --no-cache .
+          -f Dockerfiles/build/Dockerfile \
+          -t metabase/ci:java-${{ matrix.version }}-clj-1.11.0.1100.04-2022-build --push --compress --no-cache --build-arg JAVA_VERSION=${{ matrix.version }} .
       - name: Create the Java ${{ matrix.version }} testing image
         # there are no arm64 versions of the browsers
         run: |
           docker buildx build \
           --platform linux/amd64 \
-          -f Dockerfiles/java-${{ matrix.version }}/test/Dockerfile \
-          -t metabase/ci:java-${{ matrix.version }}-clj-1.11.0.1100.04-2022-node-browsers --push --compress --no-cache .
+          -f Dockerfiles/test/Dockerfile \
+          -t metabase/ci:java-${{ matrix.version }}-clj-1.11.0.1100.04-2022-node-browsers --push --compress --no-cache --build-arg JAVA_VERSION=${{ matrix.version }} .
